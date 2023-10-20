@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBadge, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import { useState } from 'react';
@@ -37,7 +37,14 @@ const Main: React.FC = () => {
               {
                 images.map((x, index) => (
                   <div key={index}>
-                    <img src={x}></img>
+                    <IonCard style={{ height: "100%", width: "150px" }}>
+                      <img src={x}></img>
+                      <IonButton color="danger" size="small" expand="full" onClick={()=>{
+                          images.splice(index, index+1)
+                          console.log(images)
+                          setImages([...images])
+                      }}>Delete</IonButton>
+                    </IonCard>
                   </div>
                 ))
               }
@@ -51,6 +58,7 @@ const Main: React.FC = () => {
               const reader = new FileReader();
               reader.onloadend = () => {
                 var base64 = reader.result;
+                //@ts-ignore
                 setImages([...images, base64])
               };
               //@ts-ignore

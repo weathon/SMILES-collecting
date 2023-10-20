@@ -1,14 +1,25 @@
 div.scrollmenu {
-    overflow: auto;
-    white-space: nowrap;
-  }
-  
-  div.scrollmenu div {
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    height: 150px;
-    padding: 10px
-  }
+  overflow: auto;
+  white-space: nowrap;
+}
 
-  /* https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp */
+div.scrollmenu div {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  height: 150px;
+  padding: 10px
+}
+
+/* https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp */
+/* div.delete {
+  width: 0px;
+  height: 6px;
+  background-color: hsl(0, 100%, 50%);
+  position: absolute;
+  top: 0;
+  right: -5px; 
+  border-radius: 30px;
+  text-align: center;
+  line-height: 60px;
+} */
