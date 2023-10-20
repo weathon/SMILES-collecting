@@ -26,12 +26,15 @@ const Home: React.FC = () => {
             <li> You will be given a series of molecules, you will be provided with their name and 3D sturture.
             </li>
             <li>You will need to build this molecule and take 4-6 images of it at different angle.</li>
-          
+            <li>The image should be taken on a pure dark backgroun.</li>
             <li>
               If there is a chair flip for the molecule, do the chair flip and tkae another 4-6 images at different angle.
             </li>
+            <li>
+              For best experence, we recommond using a tablet or large screen phone
+            </li>
             </ul>
-            <IonButton expand="block">Start</IonButton>
+            <IonButton expand="block" routerLink="/main">Start</IonButton>
             </IonCardContent>
         </IonCard>
       </IonContent>

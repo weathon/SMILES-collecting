@@ -1,0 +1,14 @@
+div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+  }
+  
+  div.scrollmenu div {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    height: 150px;
+    padding: 10px
+  }
+
+  /* https://www.w3schools.com/howto/howto_css_menu_horizontal_scroll.asp */
