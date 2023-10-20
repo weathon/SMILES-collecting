@@ -1,0 +1,7 @@
+{
+  "name": "Image Collecting",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
