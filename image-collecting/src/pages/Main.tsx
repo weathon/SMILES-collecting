@@ -3,9 +3,14 @@ import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import { useState } from 'react';
 import { addOutline } from 'ionicons/icons';
+import { useParams } from 'react-router';
 // import * as $3Dmol from '3dmol/build/3Dmol.js'
 
 const Main: React.FC = () => {
+  const upload = () => {
+    //@ts-ignore
+    document.getElementById("file").click();
+  }
   const pid = 5635;
   const [images, setImages] = useState([])
   return (
@@ -37,11 +42,22 @@ const Main: React.FC = () => {
                 ))
               }
               <div>
-                <IonCard style={{height: "100%", width: "150px"}}>
-                  <IonIcon style={{paddingTop: "30%"}} size="large" icon={addOutline}></IonIcon>
+                <IonCard onClick={upload} style={{ height: "100%", width: "150px" }}>
+                  <IonIcon style={{ paddingTop: "30%" }} size="large" icon={addOutline}></IonIcon>
                 </IonCard>
               </div>
             </div>
+            <input onChange={() => {
+              const reader = new FileReader();
+              reader.onloadend = () => {
+                var base64 = reader.result;
+                setImages([...images, base64])
+              };
+              //@ts-ignore
+              reader.readAsDataURL(document.getElementById("file").files[0]);
+            }} id="file"
+              type="file" hidden
+            />
           </IonCardContent>
 
 
