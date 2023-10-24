@@ -1,6 +1,6 @@
 function go(cid) {
     let element = document.querySelector('#container-01');
-    let config = { backgroundColor: 'lightgray' };
+    let config = { backgroundColor: 'darkgray' };
     let viewer = $3Dmol.createViewer(element, config);
     let v = viewer;
 
@@ -12,7 +12,7 @@ function go(cid) {
             console.log(data)
             v.addModel(data, "sdf");                       /* load data */
             v.setStyle({
-                "stick": { "radius": 0.15, "color": "gray" }, "sphere": {
+                "stick": { "radius": 0.15}, "sphere": {
                     "scale": 0.2, "colorfunc": (atom) => {
                         // return "#000000"
                         // https://en.wikipedia.org/wiki/CPK_coloring

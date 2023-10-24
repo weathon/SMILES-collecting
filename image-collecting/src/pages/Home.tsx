@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonInput, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 
@@ -33,8 +33,20 @@ const Home: React.FC = () => {
             <li>
               For best experence, we recommond using a tablet or large screen phone
             </li>
+            <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exsits, make as much visable as possib;e.</b></li>
             </ul>
-            <IonButton expand="block" routerLink="/main">Start</IonButton>
+            <IonInput id="id">Volunteer ID:</IonInput>
+            <IonButton expand="block" onClick={()=>{
+              //@ts-ignore
+             const id=document.getElementById("id").value;
+             if(id)
+             {
+              window.location.href = "/main"
+             }
+             else{
+              alert("Please enter volunteer ID")
+             }
+            }}>Start</IonButton>
             </IonCardContent>
         </IonCard>
       </IonContent>

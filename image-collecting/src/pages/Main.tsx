@@ -11,7 +11,7 @@ const Main: React.FC = () => {
     //@ts-ignore
     document.getElementById("file").click();
   }
-  const pid = 5635;
+  const pid = 297;
   const [images, setImages] = useState([])
   return (
     <IonPage>
@@ -38,12 +38,14 @@ const Main: React.FC = () => {
                 images.map((x, index) => (
                   <div key={index}>
                     <IonCard style={{ height: "100%", width: "150px" }}>
-                      <img src={x}></img>
-                      <IonButton color="danger" size="small" expand="full" onClick={()=>{
-                          images.splice(index, index+1)
-                          console.log(images)
-                          setImages([...images])
+                    <IonButton color="danger" size="small" expand="full" onClick={() => {
+                        if (!confirm("Are you sure to delete?")) { return }
+                        images.splice(index, index + 1)
+                        console.log(images)
+                        setImages([...images])
                       }}>Delete</IonButton>
+                      <img src={x} ></img>
+
                     </IonCard>
                   </div>
                 ))
@@ -54,7 +56,7 @@ const Main: React.FC = () => {
                 </IonCard>
               </div>
             </div>
-            <input onChange={() => {
+            <input onChange={(e) => {
               const reader = new FileReader();
               reader.onloadend = () => {
                 var base64 = reader.result;
@@ -63,6 +65,8 @@ const Main: React.FC = () => {
               };
               //@ts-ignore
               reader.readAsDataURL(document.getElementById("file").files[0]);
+              //@ts-ignore
+              e.target.value=null;
             }} id="file"
               type="file" hidden
             />
@@ -71,7 +75,10 @@ const Main: React.FC = () => {
 
         </IonCard>
 
-
+            <IonButton expand="block" onClick={()=>{
+              if(!confirm("Are you sure to submit?")) return;
+              window.location.reload();
+            }}>SUBMIT</IonButton>
       </IonContent>
     </IonPage>
   );
