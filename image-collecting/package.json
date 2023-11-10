@@ -19,7 +19,9 @@
     "@capacitor/status-bar": "5.0.6",
     "@ionic/react": "^7.0.0",
     "@ionic/react-router": "^7.0.0",
-    "@supabase/supabase-js": "^2.38.2",
+    "@supabase/auth-ui-react": "^0.4.6",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.38.4",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.0.0",
@@ -42,7 +44,7 @@
     "eslint-plugin-react": "^7.32.2",
     "jsdom": "^22.1.0",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9",
+    "vite": "4.5.0",
     "vitest": "^0.32.2"
   },
   "description": "An Ionic project"
