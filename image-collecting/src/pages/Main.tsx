@@ -1,9 +1,10 @@
-import { IonBadge, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonChip, IonContent, IonHeader, IonIcon, IonModal, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import { useState } from 'react';
 import { addOutline } from 'ionicons/icons';
 import { useParams } from 'react-router';
+import Cam from '../components/Camera';
 // import * as $3Dmol from '3dmol/build/3Dmol.js'
 
 const Main: React.FC = () => {
@@ -13,15 +14,30 @@ const Main: React.FC = () => {
   }
   const pid = 297;
   const [images, setImages] = useState([])
+  const [count, setCount] = useState(0)
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <IonPage>
+      <IonModal isOpen={isOpen}>
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons>
+              <IonButton onClick={()=>{setIsOpen(false)}}>Close</IonButton>
+            </IonButtons>
+            <IonTitle>Camera</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <Cam></Cam>
+      </IonModal>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Image Collecting</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        
         <IonCard>
+        <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div>
           <IonCardHeader>
             <b>Your current molecule: CID{pid}</b>
           </IonCardHeader>
@@ -32,53 +48,19 @@ const Main: React.FC = () => {
             <iframe style={{ width: "100%", height: "400px", border: 0 }}
               src={"/render.html?" + pid}></iframe>
             <br />
-            My Images:
-            <div className='scrollmenu'>
-              {
-                images.map((x, index) => (
-                  <div key={index}>
-                    <IonCard style={{ height: "100%", width: "150px" }}>
-                    <IonButton color="danger" size="small" expand="full" onClick={() => {
-                        if (!confirm("Are you sure to delete?")) { return }
-                        images.splice(index, index + 1)
-                        console.log(images)
-                        setImages([...images])
-                      }}>Delete</IonButton>
-                      <img src={x} ></img>
-
-                    </IonCard>
-                  </div>
-                ))
-              }
-              <div>
-                <IonCard onClick={upload} style={{ height: "100%", width: "150px" }}>
-                  <IonIcon style={{ paddingTop: "30%" }} size="large" icon={addOutline}></IonIcon>
-                </IonCard>
-              </div>
-            </div>
-            <input onChange={(e) => {
-              const reader = new FileReader();
-              reader.onloadend = () => {
-                var base64 = reader.result;
-                //@ts-ignore
-                setImages([...images, base64])
-              };
-              //@ts-ignore
-              reader.readAsDataURL(document.getElementById("file").files[0]);
-              //@ts-ignore
-              e.target.value=null;
-            }} id="file"
-              type="file" hidden
-            />
+            
           </IonCardContent>
 
 
         </IonCard>
-
-            <IonButton expand="block" onClick={()=>{
-              if(!confirm("Are you sure to submit?")) return;
-              window.location.reload();
-            }}>SUBMIT</IonButton>
+{/* 
+        <IonButton expand="block" onClick={() => {
+          if (!confirm("Are you sure to submit?")) return;
+          window.location.reload();
+        }}>SUBMIT</IonButton> */}
+        <IonButton onClick={()=>{setIsOpen(true)}} expand="block">
+          Begin Taking Images
+        </IonButton>
       </IonContent>
     </IonPage>
   );
