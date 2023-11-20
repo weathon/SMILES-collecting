@@ -19,7 +19,8 @@ const Cam = (prop: any) => {
     // const [images, setImages] = useState([])
     return (
         <>
-            <Webcam ref={webcamRef} id="cam" videoConstraints={{ "facingMode": "environment" }}></Webcam>
+            <Webcam style={{height: "50%"}} ref={webcamRef} id="cam" videoConstraints={{ "facingMode": "environment" }}></Webcam>
+
             <IonFab horizontal="center" vertical="bottom" onClick={capture}><IonFabButton><IonIcon icon={camera}></IonIcon></IonFabButton></IonFab>
 
 
@@ -56,6 +57,7 @@ const Cam = (prop: any) => {
             }} id="file"
                 type="file" hidden
             />
+
         </>
     )
 }

@@ -37,7 +37,7 @@ const Home: React.FC = () => {
               <li>
                 For best experence, we recommond using a tablet or large screen phone
               </li>
-              <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exsits, make as much visable as possib;e.</b></li>
+              <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exsits, make as much visable as possible. If a molecule contains atoms you do not have in the molecular kit, skip the molecule by submiting without taking any images. If it is an ionic compound, skip it as well. </b></li>
             </ul>
             {/* <IonInput id="id">Volunteer ID:</IonInput> */}
             <IonButton expand="block" onClick={() => {
