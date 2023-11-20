@@ -6,6 +6,7 @@ import { addOutline } from 'ionicons/icons';
 import { useParams } from 'react-router';
 import Cam from '../components/Camera';
 // import * as $3Dmol from '3dmol/build/3Dmol.js'
+import { supabase } from '../SupabaseClient';
 
 const Main: React.FC = () => {
   const upload = () => {
@@ -24,12 +25,23 @@ const Main: React.FC = () => {
             <IonButtons>
               <IonButton onClick={() => { setIsOpen(false) }}>Close</IonButton>
             </IonButtons>
-          
+
             <IonTitle>Camera</IonTitle>
-            <IonButtons slot="end" onClick={()=>{
-              if(confirm("Are you sure to submit"))
-              {
-                setPid(pid+1);
+            <IonButtons slot="end" onClick={async () => {
+              if (confirm("Are you sure to submit")) {
+                // @ts-ignore
+                const { error } = await supabase.from('images')
+                  .insert(images.map(x=>(
+                    {cid: pid, image: x}
+                  )))
+                if(error)
+                {
+                  alert(error.details);
+                  console.log(error)
+                  return;
+                }
+                setPid(pid + 1);
+                setCount(count + 1);
                 setImages([])
                 setIsOpen(false);
               }

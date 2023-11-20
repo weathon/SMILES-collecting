@@ -2,8 +2,9 @@ import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, Ion
 import ExploreContainer from '../components/ExploreContainer';
 import './Home.css';
 import { logoGoogle } from 'ionicons/icons';
-import { createClient } from "@supabase/supabase-js";
-const supabase = createClient('https://vcjgznqnyqmvkrommoyb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjamd6bnFueXFtdmtyb21tb3liIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTc4MzY5NzEsImV4cCI6MjAxMzQxMjk3MX0.brt6zUmcuPJxpgyj42j8Mhd80KfXtmwtz0j52QjeC4o')
+// import { createClient } from "@supabase/supabase-js";
+// const supabase = createClient('https://vcjgznqnyqmvkrommoyb.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZjamd6bnFueXFtdmtyb21tb3liIiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTc4MzY5NzEsImV4cCI6MjAxMzQxMjk3MX0.brt6zUmcuPJxpgyj42j8Mhd80KfXtmwtz0j52QjeC4o')
+import { supabase } from '../SupabaseClient';
 
 const Home: React.FC = () => {
   return (
