@@ -4,8 +4,10 @@ import { IonCard, IonButton, IonIcon, IonFabButton, IonFab } from "@ionic/react"
 import { images, addOutline, camera } from "ionicons/icons";
 
 
-const Cam = () => {
+const Cam = (prop: any) => {
     const webcamRef = React.useRef(null);
+    var images = prop.images
+    var setImages = prop.setImages
     const capture = React.useCallback(
         () => {
             const imageSrc = webcamRef.current.getScreenshot();
@@ -14,7 +16,7 @@ const Cam = () => {
         },
         [webcamRef]
     );
-    const [images, setImages] = useState([])
+    // const [images, setImages] = useState([])
     return (
         <>
             <Webcam ref={webcamRef} id="cam" videoConstraints={{ "facingMode": "environment" }}></Webcam>

@@ -12,7 +12,7 @@ const Main: React.FC = () => {
     //@ts-ignore
     document.getElementById("file").click();
   }
-  const pid = 297;
+  const [pid, setPid] = useState(278)
   const [images, setImages] = useState([])
   const [count, setCount] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
@@ -22,12 +22,23 @@ const Main: React.FC = () => {
         <IonHeader>
           <IonToolbar>
             <IonButtons>
-              <IonButton onClick={()=>{setIsOpen(false)}}>Close</IonButton>
+              <IonButton onClick={() => { setIsOpen(false) }}>Close</IonButton>
             </IonButtons>
+          
             <IonTitle>Camera</IonTitle>
+            <IonButtons slot="end" onClick={()=>{
+              if(confirm("Are you sure to submit"))
+              {
+                setPid(pid+1);
+                setImages([])
+                setIsOpen(false);
+              }
+            }}>
+              <IonButton>Submit</IonButton>
+            </IonButtons>
           </IonToolbar>
         </IonHeader>
-        <Cam></Cam>
+        <Cam images={images} setImages={setImages}></Cam>
       </IonModal>
       <IonHeader>
         <IonToolbar>
@@ -35,9 +46,9 @@ const Main: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        
+
         <IonCard>
-        <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div>
+          <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div>
           <IonCardHeader>
             <b>Your current molecule: CID{pid}</b>
           </IonCardHeader>
@@ -48,17 +59,17 @@ const Main: React.FC = () => {
             <iframe style={{ width: "100%", height: "400px", border: 0 }}
               src={"/render.html?" + pid}></iframe>
             <br />
-            
+
           </IonCardContent>
 
 
         </IonCard>
-{/* 
+        {/* 
         <IonButton expand="block" onClick={() => {
           if (!confirm("Are you sure to submit?")) return;
           window.location.reload();
         }}>SUBMIT</IonButton> */}
-        <IonButton onClick={()=>{setIsOpen(true)}} expand="block">
+        <IonButton onClick={() => { setIsOpen(true) }} expand="block">
           Begin Taking Images
         </IonButton>
       </IonContent>
