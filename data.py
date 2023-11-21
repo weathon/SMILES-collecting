@@ -1,4 +1,4 @@
-with open("pccompound_result.txt", "r") as f:
+with open("a", "r") as f:
     t = f.read().split("\n\n")
 
 
