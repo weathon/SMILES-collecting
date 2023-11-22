@@ -55,10 +55,12 @@ const Main: React.FC = () => {
             <IonTitle>Camera</IonTitle>
             <IonButtons slot="end" onClick={async () => {
               if (confirm("Are you sure to submit")) {
+                const { data: { user } } = await supabase.auth.getUser();
+                console.log(user)
                 // @ts-ignore
                 var error1 = await supabase.from('images')
                   .insert(images.map(x => (
-                    { cid: pid, image: x }
+                    { cid: pid, image: x, user_id: user.email } //remember to set RLS on server duzikouke 
                   )))
 
                 // setId(id + 1);
