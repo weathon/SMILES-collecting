@@ -26,18 +26,18 @@ const Home: React.FC = () => {
           </IonCardHeader>
 
           <IonCardContent>
-            <ul>
-              <li> You will be given a series of molecules, you will be provided with their name and 3D sturture.
+          <ul>
+              <li> You will be given a series of molecules, and you will be provided with their name and 3D structure.
               </li>
-              <li>You will need to build this molecule and take 4-6 images of it at different angle.</li>
-              <li>The image should be taken on a pure dark backgroun.</li>
+              <li>You will need to build this molecule and take 4-6 images of it at different angles.</li>
+              <li>The image should be taken on a pure dark background.</li>
               <li>
-                If there is a chair flip for the molecule, do the chair flip and tkae another 4-6 images at different angle.
+                If there is a chair flip for the molecule, do the chair flip and take another 4-6 images at different angles.
               </li>
               <li>
-                For best experence, we recommond using a tablet or large screen phone
+                For the best experience, we recommend using a tablet or large-screen phone
               </li>
-              <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exsits, make as much visable as possible. If a molecule contains atoms you do not have in the molecular kit, skip the molecule by submiting without taking any images. If it is an ionic compound, skip it as well. </b></li>
+              <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exists, make as much visible as possible. If a molecule contains atoms you do not have in the molecular kit, is an ionic compound, or is unreasonably complex, skip the molecule by submitting it without taking any images. </b></li>
             </ul>
             {/* <IonInput id="id">Volunteer ID:</IonInput> */}
             <IonButton expand="block" onClick={() => {
