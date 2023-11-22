@@ -29,7 +29,7 @@ const Home: React.FC = () => {
           <ul>
               <li> You will be given a series of molecules, and you will be provided with their name and 3D structure.
               </li>
-              <li>You will need to build this molecule and take 4-6 images of it at different angles.</li>
+              <li>You will need to build this molecule and take 5-10 images of it at different angles.</li>
               <li>The image should be taken on a pure dark background.</li>
               <li>
                 If there is a chair flip for the molecule, do the chair flip and take another 4-6 images at different angles.
@@ -37,7 +37,7 @@ const Home: React.FC = () => {
               <li>
                 For the best experience, we recommend using a tablet or large-screen phone
               </li>
-              <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exists, make as much visible as possible. If a molecule contains atoms you do not have in the molecular kit, is an ionic compound, or is unreasonably complex, skip the molecule by submitting it without taking any images. </b></li>
+              <li> <b>Make sure all atoms are visible in the photo, if this is not possible because occlusion exists, make as much visible as possible, if there is atom(s) that has 50% of it cannot be seen, skip this molecule. If a molecule contains atoms you do not have in the molecular kit, is an ionic compound, or is unreasonably complex, skip the molecule by submitting it without taking any images. </b></li>
             </ul>
             {/* <IonInput id="id">Volunteer ID:</IonInput> */}
             <IonButton expand="block" onClick={() => {
