@@ -8,6 +8,17 @@ import Cam from '../components/Camera';
 // import * as $3Dmol from '3dmol/build/3Dmol.js'
 import { supabase } from '../SupabaseClient';
 
+let color = {
+  "C": "#505050",
+  "H": "#FEFEFE",
+  "N": "#87CEEB",
+  "O": "#FE0000",
+  "Cl": "#00FE00",
+  "Br": "darkred",
+  "I": "darkpurple",
+  "S": "yellow"
+}
+
 const Main: React.FC = () => {
   const upload = () => {
     //@ts-ignore
@@ -82,7 +93,7 @@ const Main: React.FC = () => {
             </IonButtons>
           </IonToolbar>
         </IonHeader>
-          <Cam images={images} setImages={setImages}></Cam>
+        <Cam images={images} setImages={setImages}></Cam>
       </IonModal>
       <IonHeader>
         <IonToolbar>
@@ -92,14 +103,23 @@ const Main: React.FC = () => {
       <IonContent>
 
         <IonCard>
+
           <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div>
           <IonCardHeader>
             <b>Your current molecule: {name}</b>
           </IonCardHeader>
 
           <IonCardContent>
+            Color Key Card:<br />
+            {
+              Object.keys(color).map(x => (
+                <><span style={{ backgroundColor: color[x], margin: "5px", border: "solid", padding: "3px", color: ((x == "C") ? "white" : "black") }}>{x}</span></>
+              ))
+            }
             {/* <iframe style={{width: "100%", border: 0}}
          src="https://pubchem.ncbi.nlm.nih.gov/compound/23112#section=3D-Conformer&fullscreen=true"></iframe> */}
+
+
             <iframe style={{ width: "100%", height: "400px", border: 0 }}
               src={"/render.html?" + pid}></iframe>
             <br />
