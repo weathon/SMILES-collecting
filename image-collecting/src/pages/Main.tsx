@@ -64,19 +64,25 @@ const Main: React.FC = () => {
                   )))
 
                 // setId(id + 1);
-                const { data, error } = await supabase
-                  .from('molecules')
-                  .update({ 'finished': 1 }) //RLS have to have using
-                  .eq('cid', pid)
-                  .select()
+                // const { data, error } = await supabase
+                //   .from('molecules')
+                //   .update({ 'finished': 1 }) //RLS have to have using
+                //   .eq('cid', pid)
+                //   .select() shoube place before fetch next one 
 
-                console.log(data)
+                // console.log(data)
                 // console.log(pid)
                 // @ts-ignore
                 const r3 = await supabase
                   .from('molecules')
                   .select()
                   .eq('finished', false).limit(1)
+
+                const { data, error } = await supabase
+                  .from('molecules')
+                  .update({ 'finished': 1 }) //RLS have to have using
+                  .eq('cid', r3.data[0].cid)
+                  .select()
                 // if (error) {
                 //   alert(error);
                 //   console.log(error)
