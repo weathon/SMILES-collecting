@@ -14,7 +14,7 @@ const Cam = (prop: any) => {
         facingMode: "environment"
       };
     function capture(){
-        const imageSrc = webcamRef.current.getScreenshot();
+        const imageSrc = webcamRef.current.getScreenshot({width: 450, height: 450});
         console.log(images)
         setImages([...images, imageSrc])
     }
