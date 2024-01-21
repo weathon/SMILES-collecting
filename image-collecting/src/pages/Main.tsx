@@ -68,7 +68,7 @@ const Main: React.FC = () => {
                 //   .from('molecules')
                 //   .update({ 'finished': 1 }) //RLS have to have using
                 //   .eq('cid', pid)
-                //   .select() shoube place before fetch next one 
+                //   .select() //shoube place before fetch next one 
 
                 // console.log(data)
                 // console.log(pid)
@@ -95,6 +95,7 @@ const Main: React.FC = () => {
                 setCount(count + 1);
                 setImages([])
                 setIsOpen(false);
+                window.location.reload()
               }
             }}>
               <IonButton>Submit</IonButton>
@@ -129,7 +130,7 @@ const Main: React.FC = () => {
 
 
             <iframe style={{ width: "100%", height: "400px", border: 0 }}
-              src={"/render.html?" + pid}></iframe>
+              src={"/render.html?" + pid} key={pid}></iframe>
             <br />
 
           </IonCardContent>
