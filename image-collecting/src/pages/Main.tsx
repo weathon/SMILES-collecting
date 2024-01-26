@@ -102,7 +102,17 @@ const Main: React.FC = () => {
             </IonButtons>
           </IonToolbar>
         </IonHeader>
+        <IonButton onClick={async () => {
+          alert("Submiting")
+          const { data: { user } } = await supabase.auth.getUser();
+          var error1 = await supabase.from('images')
+            .insert(images.map(x => (
+              { cid: pid, image: x, user_id: user.email } //remember to set RLS on server duzikouke 
+            )))
+          setImages([])
+        }}>Submit parts</IonButton>
         <Cam images={images} setImages={setImages}></Cam>
+
       </IonModal>
       <IonHeader>
         <IonToolbar>
@@ -113,9 +123,26 @@ const Main: React.FC = () => {
 
         <IonCard>
 
-          <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div>
+          {/* <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div> */}
           <IonCardHeader>
-            <b>Your current molecule: {name}</b>
+            <b>Your current molecule: {name} <a onClick={async () => {
+              const ans = prompt("Enter PID")
+              const { data, error } = await supabase
+                .from('molecules')
+                .select()
+                .eq('cid', ans).limit(1)
+                // @ts-ignore
+              if(data.length==0)
+              {
+                alert("PID not in database") //in database still doable tho kouke
+                return
+                // setPid(data.cid)
+              }
+              if(data[0].finished==false)
+              {
+                setPid(Number(ans))
+              }
+            }}>Edit</a></b>
           </IonCardHeader>
 
           <IonCardContent>
@@ -146,7 +173,7 @@ const Main: React.FC = () => {
           Begin Taking Images
         </IonButton>
       </IonContent>
-    </IonPage>
+    </IonPage >
   );
 };
 
