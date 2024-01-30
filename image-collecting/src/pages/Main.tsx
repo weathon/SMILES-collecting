@@ -125,7 +125,7 @@ const Main: React.FC = () => {
 
           {/* <div style={{ padding: "10px" }}><IonChip color="success">You Have Captured {count} Molecules!</IonChip></div> */}
           <IonCardHeader>
-            <b>Your current molecule: {name} <a onClick={async () => {
+            <b>Your current molecule: {pid} <a onClick={async () => {
               const ans = prompt("Enter PID")
               const { data, error } = await supabase
                 .from('molecules')
