@@ -134,13 +134,21 @@ const Main: React.FC = () => {
                 // @ts-ignore
               if(data.length==0)
               {
-                alert("PID not in database") //in database still doable tho kouke
-                return
+                // alert("PID not in database") //in database still doable tho kouke
+                // return
                 // setPid(data.cid)
+                setPid(Number(ans))
+                var error1 = await supabase.from('molecules')
+                .insert(
+                  { cid: ans, finished: true} //remember to set RLS on server duzikouke 
+                )
               }
               if(data[0].finished==false)
               {
                 setPid(Number(ans))
+              }
+              else{
+                alert("Already did!")
               }
             }}>Edit</a></b>
           </IonCardHeader>
